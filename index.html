@@ -5,7 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovePlus - Mudanças Nacionais e Internacionais</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Estilos Globais -->
+    <link rel="stylesheet" href="css/reset.css">
+    
+    <!-- Estilos por Seção -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/advantages.css">
+    <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/testimonials.css">
+    <link rel="stylesheet" href="css/footer.css">
+    
+    <!-- Fontes Externas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -13,141 +25,26 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-contact">
-            <span><i class="fas fa-phone"></i> America do Sul 0800-252 5663</span>
-            <span><i class="fas fa-phone"></i> America do Norte 1-800-252-5663</span>
-            <span><i class="fas fa-at"></i> info@moveandshipping.com</span>
-        </div>
-        <div class="header-container">
-            <div class="header-logo">
-                
-            </div>
+    <!-- Header -->
+    <div id="header-container"></div>
 
-            <nav class="header-nav">
-                <a href="#" class="nav-link active"><span>Home</span></a>
-                <a href="#" class="nav-link"><span>Sobre</span></a>
-                <a href="#" class="nav-link"><span>Serviços</span></a>
-                <a href="#" class="nav-link"><span>Blog</span></a>
-                <a href="#" class="nav-link"><span>Entre em Contato</span></a>
-            </nav>
+    <!-- Hero -->
+    <div id="hero-container"></div>
 
-        </div>
-    </header>
+    <!-- Advantages -->
+    <div id="advantages-container"></div>
 
-    <section class="hero">
-        <div class="hero-container">
-            <h1>Mudanças <br> Nacionais e <br>Internacionais</h1>
-            <p>Soluções completas para pessoas e empresas.</p>
-        </div>
+    <!-- Services -->
+    <div id="services-container"></div>
 
-        <div class="hero-form-container">
-            <h2>Solicite um Orçamento</h2>
-            <h3>Obtenha um orçamento gratuito conosco.</h3>
+    <!-- About -->
+    <div id="about-container"></div>
 
-            <form id="contactForm" class="hero-form">
-                <input type="text" placeholder="Nome" required>
-                <input type="email" placeholder="Email" required>
-                <input type="text" placeholder="Origem" required>
-                <input type="text" placeholder="Destino" required>
+    <!-- Testimonials -->
+    <div id="testimonials-container"></div>
 
-                <button class="btn" type="submit">
-                    Enviar
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <section class="advantages">
-        <div class="advantages-container">
-
-            <h2>Nossos Diferenciais</h2>
-            <p>Por que escolher a Move Shipping para sua mudança?</p>
-
-            <div class="advantages-grid">
-                <div class="advantages-card">
-                     <i class="fa-regular fa-heart"></i>
-                    <h2>Equipe Especializada</h2>
-                    <p>Sabemos o que fazer em cada etapa. Mais de 15 anos de experiência em mudanças internacionais e nacionais.</p>
-                </div>
-                <div class="advantages-card">
-                    <i class="fa-solid fa-flag"></i>
-                    <h2>Atendimento Global</h2>
-                    <p>Atendemos clientes em todo o mundo, garantindo uma experiência personalizada.</p>
-                </div>
-                <div class="advantages-card">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <h2>Segurança Garantida</h2>
-                    <p>Protegemos seus bens com embalagens de alta qualidade e transporte seguro.</p>
-                </div>
-                <div class="advantages-card">
-                    <i class="fa-solid fa-book"></i>
-                    <h2>Suporte Completo</h2>
-                    <p>Oferecemos suporte contínuo durante todo o processo de mudança.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="services">
-        <div class="services-container">
-
-            <h2>Mudanças</h2>
-            <p>Oferecemos uma variedade de serviços para atender às suas necessidades de mudança.</p>
-
-            <div class="services-grid-top">
-                <div class="imgServices">
-                    <img src="./assets/images/mudancaInter.png" alt="Mudança Internacional"></div>
-                
-                
-                <div class="infoCardTop">
-                    <h4>Mudanças Internacionais</h4>
-                    <p>Realizamos mudanças internacionais para diversos destinos, oferecendo um serviço seguro, organizado e personalizado. Cuidamos de todas as etapas do processo, desde a logística e documentação até o transporte dos seus bens, garantindo tranquilidade, eficiência e total acompanhamento durante toda a mudança.</p>
-                    <div class="espacoBtn">
-                        <button class="btnInfoCardTop">Saiba Mais</button>
-                    </div>
-                    
-                </div>
-                
-            </div>
-           
-        </div>
-
-
-    </section>
-
-    <section class="about">
-        <div class="about-container">
-
-            <h2>Sobre Nós</h2>
-
-            <p>
-                Empresa especializada em transporte e relocação com foco em qualidade e segurança.
-            </p>
-
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="testimonials-container">
-
-            <h2>Depoimentos</h2>
-
-            <div class="testimonials-grid">
-                <div class="testimonials-card">Excelente atendimento.</div>
-                <div class="testimonials-card">Processo rápido e seguro.</div>
-                <div class="testimonials-card">Recomendo fortemente.</div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <p>© 2026 MovePlus Clone</p>
-        </div>
-    </footer>
+    <!-- Footer -->
+    <div id="footer-container"></div>
 
     <script src="js/main.js"></script>
 </body>

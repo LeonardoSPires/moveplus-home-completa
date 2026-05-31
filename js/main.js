@@ -1,5 +1,34 @@
 
-document.addEventListener('DOMContentLoaded', function () {
+// Carregar seções HTML dinamicamente
+async function loadSections() {
+    const sections = [
+        { id: 'header-container', file: 'sections/header.html' },
+        { id: 'hero-container', file: 'sections/hero.html' },
+        { id: 'advantages-container', file: 'sections/advantages.html' },
+        { id: 'services-container', file: 'sections/services.html' },
+        { id: 'about-container', file: 'sections/about.html' },
+        { id: 'testimonials-container', file: 'sections/testimonials.html' },
+        { id: 'footer-container', file: 'sections/footer.html' }
+    ];
+
+    for (const section of sections) {
+        try {
+            const response = await fetch(section.file);
+            if (response.ok) {
+                const html = await response.text();
+                document.getElementById(section.id).innerHTML = html;
+            }
+        } catch (error) {
+            console.error(`Erro ao carregar ${section.file}:`, error);
+        }
+    }
+
+    // Executar scripts após carregar as seções
+    initializeScripts();
+}
+
+// Inicializar funcionalidades após carregar as seções
+function initializeScripts() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
@@ -37,16 +66,20 @@ document.addEventListener('DOMContentLoaded', function () {
         // Processar o HTML mantendo os <br>
         const parts = originalHTML.split('<br>');
 
-const newHTML = parts.map(part => {
-    return part.split('').map(char => {
-        if (char === ' ') return char;
+        const newHTML = parts.map(part => {
+            return part.split('').map(char => {
+                if (char === ' ') return char;
 
-        const span = `<span class="wave-letter" style="animation-delay:${letterIndex * 0.1}s">${char}</span>`;
-        letterIndex++;
-        return span;
+                const span = `<span class="wave-letter" style="animation-delay:${letterIndex * 0.1}s">${char}</span>`;
+                letterIndex++;
+                return span;
             }).join('');
         }).join('<br>');
 
         heroH1.innerHTML = newHTML;
     }
-});
+}
+
+// Carregar as seções quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', loadSections);
+
