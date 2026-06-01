@@ -6,6 +6,8 @@ async function loadSections() {
         { id: 'hero-container', file: 'sections/hero.html' },
         { id: 'advantages-container', file: 'sections/advantages.html' },
         { id: 'services-container', file: 'sections/services.html' },
+        { id: 'cotacao-container', file: 'sections/cotacao.html' },
+        { id: 'blog-container', file: 'sections/blog.html' },
         { id: 'about-container', file: 'sections/about.html' },
         { id: 'testimonials-container', file: 'sections/testimonials.html' },
         { id: 'footer-container', file: 'sections/footer.html' }
@@ -34,6 +36,14 @@ function initializeScripts() {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Orçamento enviado com sucesso!');
+        });
+    }
+
+    const quoteForm = document.getElementById('quoteForm');
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Cotação enviada com sucesso!');
         });
     }
 
@@ -78,6 +88,88 @@ function initializeScripts() {
 
         heroH1.innerHTML = newHTML;
     }
+
+    setupScrollAnimations();
+    animateHeroIntro();
+}
+
+function animateHeroIntro() {
+    const heroContainer = document.querySelector('.hero-container');
+    const heroForm = document.querySelector('.hero-form-container');
+
+    if (!heroContainer || !heroForm) {
+        return;
+    }
+
+    heroContainer.style.opacity = '0';
+    heroForm.style.opacity = '0';
+
+    requestAnimationFrame(() => {
+        heroContainer.classList.add('hero-animate-up');
+        heroForm.classList.add('hero-animate-right');
+    });
+}
+
+function setupScrollAnimations() {
+    const upSelectors = [
+        '.hero-container',
+        '.advantages-card',
+        '.infoCardTop',
+        '.infoCardBottom',
+        '.blog-card',
+        '.testimonials-card',
+        '.cotacao-form',
+        '.about-container',
+        '.footer-container-principal'
+    ];
+
+    const rightSelectors = [
+        '.hero-form-container'
+    ];
+
+    const upElements = document.querySelectorAll(upSelectors.join(', '));
+    const rightElements = document.querySelectorAll(rightSelectors.join(', '));
+
+    if (!upElements.length && !rightElements.length) return;
+
+    upElements.forEach((element) => {
+        element.classList.add('animate-up');
+    });
+
+    rightElements.forEach((element) => {
+        element.classList.add('animate-right', 'delay');
+    });
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -20px 0px'
+    });
+
+    upElements.forEach((element) => {
+        observer.observe(element);
+        if (isElementVisible(element)) {
+            element.classList.add('in-view');
+        }
+    });
+
+    rightElements.forEach((element) => {
+        observer.observe(element);
+        if (isElementVisible(element)) {
+            element.classList.add('in-view');
+        }
+    });
+}
+
+function isElementVisible(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom > 0;
 }
 
 // Carregar as seções quando o DOM estiver pronto

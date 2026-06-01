@@ -2,6 +2,7 @@
 
 .advantages {
     padding: 100px 0;
+    background: var(--color-light-bg);
 }
 
 .advantages-container {
@@ -29,7 +30,7 @@
 }
 
 .advantages-card {
-    background: var(--color-white);
+    
     padding: 35px;
     border-left: 8px solid var(--color-primary);
     border-radius: 10px;
