@@ -2,11 +2,11 @@
 
 .cotacao {
     padding: 100px 0;
-    background: var(--color-light-bg) url('../assets/images/backgroundCotacao.png') center / cover no-repeat;;
+    background: var(--color-light-bg) url('../../assets/images/backgroundCotacao.png') center / cover no-repeat;;
 }
 
 .cotacao-container {
-    width: min(90%, 1200px);
+    width: min(50%, 1200px);
     margin: 0 auto;
 }
 

@@ -2,15 +2,15 @@
 // Carregar seções HTML dinamicamente
 async function loadSections() {
     const sections = [
-        { id: 'header-container', file: 'sections/header.html' },
-        { id: 'hero-container', file: 'sections/hero.html' },
-        { id: 'advantages-container', file: 'sections/advantages.html' },
-        { id: 'services-container', file: 'sections/services.html' },
-        { id: 'cotacao-container', file: 'sections/cotacao.html' },
-        { id: 'blog-container', file: 'sections/blog.html' },
-        { id: 'about-container', file: 'sections/about.html' },
-        { id: 'testimonials-container', file: 'sections/testimonials.html' },
-        { id: 'footer-container', file: 'sections/footer.html' }
+        { id: 'header-container', file: 'pages/Home/header.html' },
+        { id: 'hero-container', file: 'pages/Home/hero.html' },
+        { id: 'advantages-container', file: 'pages/Home/advantages.html' },
+        { id: 'services-container', file: 'pages/Home/services.html' },
+        { id: 'cotacao-container', file: 'pages/Home/cotacao.html' },
+        { id: 'blog-container', file: 'pages/Home/blog.html' },
+        { id: 'about-container', file: 'pages/Home/about.html' },
+        { id: 'testimonials-container', file: 'pages/Home/testimonials.html' },
+        { id: 'footer-container', file: 'pages/Home/footer.html' }
     ];
 
     for (const section of sections) {
@@ -52,7 +52,11 @@ function initializeScripts() {
     if (headerNav) {
         headerNav.addEventListener('click', function (e) {
             const link = e.target.closest('.nav-link');
-            if (link) {
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            const isAnchor = href && href.startsWith('#');
+            if (isAnchor) {
                 e.preventDefault();
 
                 // Remove a classe active de todos os links
@@ -101,12 +105,9 @@ function animateHeroIntro() {
         return;
     }
 
-    heroContainer.style.opacity = '0';
-    heroForm.style.opacity = '0';
-
     requestAnimationFrame(() => {
-        heroContainer.classList.add('hero-animate-up');
-        heroForm.classList.add('hero-animate-right');
+        heroContainer.classList.add('in-view');
+        heroForm.classList.add('in-view');
     });
 }
 
@@ -172,6 +173,17 @@ function isElementVisible(element) {
     return rect.top < window.innerHeight && rect.bottom > 0;
 }
 
+function isHomePage() {
+    const page = window.location.pathname.split('/').pop();
+    return page === '' || page === 'index.html';
+}
+
 // Carregar as seções quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', loadSections);
+document.addEventListener('DOMContentLoaded', () => {
+    if (isHomePage()) {
+        loadSections();
+    } else {
+        initializeScripts();
+    }
+});
 

@@ -38,7 +38,7 @@
 }
 
 .header-logo {
-    background: url('../assets/images/logoNovaP.png') no-repeat center;
+    background: url('../../assets/images/logoNovaP.png') no-repeat center;
     background-size: contain;
 
     width: 170px;
